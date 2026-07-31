@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llantera Los Pelones | Morelia</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0f0f0f;
+            --card-dark: #181818;
+            --primary-red: #e31b23;
+            --red-hover: #c41219;
+            --accent-yellow: #ffcc00;
+            --text-light: #f4f4f4;
+            --text-gray: #aaaaaa;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid rgba(227, 27, 35, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        .logo span {
+            color: var(--primary-red);
+        }
+
+        .logo i {
+            color: var(--accent-yellow);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-cta {
+            background-color: var(--primary-red);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 15px rgba(227, 27, 35, 0.4);
+        }
+
+        .nav-cta:hover {
+            background-color: var(--red-hover);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 95vh;
+            background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            padding: 0 20px;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            z-index: 2;
+        }
+
+        .rating-badge {
+            background: rgba(255, 204, 0, 0.15);
+            border: 1px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-red);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            box-shadow: 0 4px 20px rgba(227, 27, 35, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--red-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-yellow);
+            color: var(--accent-yellow);
+        }
+
+        /* ===== ESTADÍSTICAS RÁPIDAS ===== */
+        .stats-bar {
+            background-color: var(--card-dark);
+            border-top: 3px solid var(--primary-red);
+            border-bottom: 1px solid #222;
+            padding: 30px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* ===== SECCIONES GENERALES ===== */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-title span {
+            color: var(--primary-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* ===== MARCAS DE LLANTAS ===== */
+        .brands-section {
+            background-color: #121212;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            align-items: center;
+        }
+
+        .brand-card {
+            background: var(--card-dark);
+            border: 1px solid #252525;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .brand-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(227, 27, 35, 0.15);
+        }
+
+        .brand-card i {
+            font-size: 2.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 15px;
+        }
+
+        .brand-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SERVICIOS ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-red);
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(227, 27, 35, 0.2);
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.08);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .service-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== TESTIMONIOS (CARRUSEL AUTOMÁTICO) ===== */
+        .testimonials-section {
+            background: linear-gradient(rgba(15,15,15,0.9), rgba(15,15,15,0.95)), url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-card {
+            background: rgba(24, 24, 24, 0.85);
+            border: 1px solid #333;
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stars {
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: #f0f0f0;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-yellow);
+            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #444;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* ===== UBICACIÓN Y SUCURSALES ===== */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .info-row i {
+            color: var(--primary-red);
+            font-size: 1.4rem;
+            margin-top: 5px;
+        }
+
+        .info-row h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .info-row p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .map-box {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #252525;
+            height: 400px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #080808;
+            border-top: 1px solid #222;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* ===== WHATSAPP FLOTANTE ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: 25px;
+                border-bottom: 2px solid var(--primary-red);
+                text-align: center;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-car-burst"></i> LLANTERA <span>LOS PELONES</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#marcas">Marcas</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Opiniones</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="https://wa.me/524432622564?text=Hola,%20me%20gustaría%20cotizar%20unas%20llantas" target="_blank" class="nav-cta"><i class="fa-brands fa-whatsapp"></i> Cotizar Rápido</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="rating-badge">
+                    <i class="fa-solid fa-star"></i> 4.4 de calificación en Google (3,374+ reseñas)
+                </div>
+                <h1>Siempre en completo movimiento <span>Encuentra todas las medidas y marcas</span></h1>
+                <p>Especialistas en venta de llantas para todo tipo de presupuesto y vehículo en Morelia. Atención rápida, gran variedad y precios directos inigualables.</p>
+                <div class="hero-btns">
+                    <a href="https://wa.me/524432622564?text=Hola,%20necesito%20cotizar%20medidas%20de%20llantas" target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+                    </a>
+                    <a href="#servicios" class="btn btn-outline">Nuestros Servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTADÍSTICAS RÁPIDAS -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>3,300+</h3>
+                <p>Opiniones Positivas</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Variedad de Medidas</p>
+            </div>
+            <div class="stat-item">
+                <h3>Rápido</h3>
+                <p>Instalación Eficiente</p>
+            </div>
+            <div class="stat-item">
+                <h3>Económico</h3>
+                <p>Los Mejores Precios</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MARCAS DE LLANTAS -->
+    <section id="marcas" class="brands-section">
+        <div class="container">
+            <div class="section-title">
+                <span>Catálogo Extenso</span>
+                <h2>Todas las Marcas y Medidas</h2>
+                <p>Trabajamos con opciones líderes en el mercado para garantizar seguridad, durabilidad y el precio justo para tu vehículo.</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4>Michelin</h4>
+                </div>
+                <div class="brand-card">
+                    <i class="fa-solid fa-dharmachakra"></i>
+                    <h4>Bridgestone</h4>
+                </div>
+                <div class="brand-card">
+                    <i class="fa-solid fa-gears"></i>
+                    <h4>Goodyear</h4>
+                </div>
+                <div class="brand-card">
+                    <i class="fa-solid fa-circle-dot"></i>
+                    <h4>Continental</h4>
+                </div>
+                <div class="brand-card">
+                    <i class="fa-solid fa-car-side"></i>
+                    <h4>Pirelli</h4>
+                </div>
+                <div class="brand-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h4>Firestone & Más</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="container">
+        <div class="section-title">
+            <span>Soluciones Integrales</span>
+            <h2>Servicios Profesionales</h2>
+            <p>Lo que necesitas para mantener tu auto rodando seguro en las calles de Morelia.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=600&q=80" alt="Venta de Llantas">
+                </div>
+                <div class="service-content">
+                    <h3>Venta de Neumáticos</h3>
+                    <p>Gran inventario en stock. Desde la opción más económica hasta gamas premium para automóviles, camionetas y SUVs.</p>
+                    <a href="https://wa.me/524432622564" target="_blank" class="service-link">Consultar Medida <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80" alt="Instalación Rápida">
+                </div>
+                <div class="service-content">
+                    <h3>Instalación Inmediata</h3>
+                    <p>Montaje rápido y profesional realizado por nuestro equipo capacitado para que no pierdas tiempo valioso.</p>
+                    <a href="https://wa.me/524432622564" target="_blank" class="service-link">Saber Más <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80" alt="Asesoría y Opciones">
+                </div>
+                <div class="service-content">
+                    <h3>Asesoría y Presupuestos</h3>
+                    <p>Te mostramos todas las opciones disponibles en existencias con rangos de precios claros adaptados a tu bolsillo.</p>
+                    <a href="https://wa.me/524432622564" target="_blank" class="service-link">Pedir Cotización <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS (CARRUSEL AUTOMÁTICO) -->
+    <section id="testimonios" class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <span style="color: var(--accent-yellow);">Reputación Comprobada</span>
+                <h2>Lo que dicen nuestros clientes en Google</h2>
+                <p>Más de 3,300 opiniones respaldan nuestra rapidez, variedad y precios.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-slide active">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Me atendieron rápido, tienen gran variedad de calidad y precios, la instalación súper rápido."</p>
+                        <div class="testimonial-author">Dalila Avila</div>
+                        <div class="testimonial-role">Local Guide en Google Maps</div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Tenía cierto escepticismo por ir al lugar, sin embargo, te ofrecen los diversos modelos en existencias y precios de las llantas, desde la más económica a la más cara."</p>
+                        <div class="testimonial-author">Rubén GH</div>
+                        <div class="testimonial-role">Local Guide en Google Maps</div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Las llantas están a buen precio y ese es el atractivo de comprarlas en este lugar. Son muy amables los que las venden y te dan opciones excelentes."</p>
+                        <div class="testimonial-author">J M</div>
+                        <div class="testimonial-role">Local Guide en Google Maps</div>
+                    </div>
+                </div>
+
+                <!-- Puntos de navegación -->
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y CONTACTO -->
+    <section id="ubicacion" class="container">
+        <div class="location-grid">
+            <div class="location-info">
+                <span style="color: var(--primary-red); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 5px;">Sucursal Principal</span>
+                <h3>Visítanos en Morelia</h3>
+                <p style="color: var(--text-gray); margin-bottom: 30px;">Acércate con confianza. Te brindamos atención personalizada y opciones al momento.</p>
+                
+                <div class="info-row">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Dirección</h4>
+                        <p>Jacinto Canek 364A, Insurgentes, 58250 Morelia, Mich.</p>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <h4>Horario de Atención</h4>
+                        <p>Abierto · Cierra a las 8:00 p.m.</p>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>Teléfono Directo / WhatsApp</h4>
+                        <p>443 262 2564</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3756.19!2d-101.18!3d19.70!2m3!1f0!2f0!3f0!3m2!1f1024!2f768!4f13.1!3m3!1m2!1s0x842d0e653835c6e1%3A0x8e5f2951b11e2f70!2sJacinto%20Canek%20364A%2C%20Insurgentes%2C%2058250%20Morelia%2C%20Mich.!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Llantera Los Pelones. Todos los derechos reservados. | Morelia, Michoacán.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/524432622564?text=Hola,%20quisiera%20información%20sobre%20medidas%20de%20llantas" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menú responsive para móviles
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+
+        // Carrusel automático de testimonios
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+            
+            setTimeout(showSlides, 5000);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        setTimeout(showSlides, 5000);
+    </script>
+</body>
+</html>
